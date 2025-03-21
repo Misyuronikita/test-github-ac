@@ -8,8 +8,11 @@ jobs:
     steps:
       - name: Print greeting
         run: | 
-          apt install
-          echo "I've reloaded the system sucessfully!"
+          echo "Checking content of dir"
+          ls -la
+          touch secret-file.txt
+          ls -la
+          echo "Checking was donea"
       - name: Print goodbye
         run: |
           echo "The content of directory"
