@@ -1,0 +1,35 @@
+name: Template for React
+
+on: 
+  workflow_call:
+    inputs:
+      run-command:
+        type: string
+        description: 'Command to run after setup'
+        required: false
+        default: ''
+      deploy-command:
+        type: string
+        description: 'Command to run for deployment'
+        required: false
+        default: ''
+  
+
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm ci
+      - name: Run additional command
+        if: ${{ inputs.run-command != '' }}
+        run: ${{ inputs.run-command }}
+      - name: Run deploy command
+        if: ${{ inputs.deploy-command != '' }}
+        run: ${{ inputs.deploy-command }}
