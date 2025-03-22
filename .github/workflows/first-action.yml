@@ -9,10 +9,12 @@ jobs:
       run-command: 'npm test'
   build:
     uses: ./.github/workflows/template.yml
+    needs: test
     with:
       run-command: 'npm run build'
   deploy:
     uses: ./.github/workflows/template.yml
+    needs: build
     with:
       run-command: 'npm run build'
       deploy-command: 'echo "Deploying ..."'
