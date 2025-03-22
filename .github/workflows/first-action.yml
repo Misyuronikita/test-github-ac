@@ -4,15 +4,15 @@ on: push
 
 jobs:
   test:
-    uses: ./github/workflows/template.yml
+    uses: ./github/workflows/template.yml@main
     with:
       run-command: 'npm test'
   build:
-    uses: ./github/workflows/template.yml
+    uses: ./github/workflows/template.yml@main
     with:
       run-command: 'npm run build'
   deploy:
-    uses: ./github/workflows/template.yml
+    uses: ./github/workflows/template.yml@main
     with:
       run-command: 'npm run build'
       deploy-command: 'echo "Deploying ..."'
